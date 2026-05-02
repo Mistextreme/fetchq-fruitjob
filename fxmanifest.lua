@@ -2,7 +2,6 @@ fx_version 'cerulean'
 game 'gta5'
 lua54 'yes'
 
-
 description 'Fruit Transport Job System - Solo & Group support, document system, delivery points'
 version '1.0.0'
 
@@ -12,9 +11,9 @@ escrow_ignore {
     'html/style.css',
     'html/script.js',
 }
+
 shared_scripts {
     '@ox_lib/init.lua',
-    '@qb-core/shared/locale.lua',
     'config.lua'
 }
 
@@ -32,6 +31,3 @@ files {
     'html/style.css',
     'html/script.js'
 }
-
-dependency '/assetpacks'
-dependency '/assetpacks'
