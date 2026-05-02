@@ -1,4 +1,5 @@
 Config = {}
+
 Config.Debug = false
 Config.JobCheckInterval = 2000
 Config.JobCheckIntervalNear = 500
@@ -6,6 +7,7 @@ Config.NearDistance = 50.0
 Config.MaxDistanceFromTruck = 200.0
 Config.MinGroupSize = 2
 Config.MaxGroupSize = 4
+
 Config.DepotNPC = {
     model = 's_m_m_warehouse_01',
     coords = vector4(1218.35, -3226.74, 4.88, 354.06),
@@ -17,6 +19,7 @@ Config.DepotNPC = {
     },
     interactDistance = 2.5,
 }
+
 Config.Farm = {
     coords = vector3(2414.68, 4993.38, 46.22),
     radius = 30.0,
@@ -52,6 +55,7 @@ Config.Farm = {
     bayMarkerRadius = 4.0,
     bayInteractDistance = 6.0,
 }
+
 Config.Truck = {
     model = 'mule3',
     spawnCoords = {
@@ -65,6 +69,7 @@ Config.Truck = {
     loadMarkerRadius = 2.5,
     loadMarkerColor = {r = 50, g = 200, b = 50, a = 150},
 }
+
 Config.SoloMode = {
     npcModel = 'a_m_m_farmer_01',
     npcCount = 3,
@@ -93,6 +98,7 @@ Config.SoloMode = {
         vector3(0.0, -2.0, 0.05),
     },
 }
+
 Config.GroupMode = {
     crateProp = 'prop_veg_crop_03_cab',
     crateCarryAnimDict = 'anim@heists@box_carry@',
@@ -102,6 +108,8 @@ Config.GroupMode = {
     crateAttachRotation = vector3(0.0, 0.0, 0.0),
     cratePickupDistance = 1.5,
     loadProgressTime = 2000,
+    -- Minimum number of crates that must be loaded before the job can proceed
+    crateTarget = 6,
     cratePositions = {
         vector3(-8.0, 2.3, 0.36),
         vector3(-6.5, 2.3, 0.36),
@@ -111,6 +119,7 @@ Config.GroupMode = {
         vector3(-6.27, -20.66, -0.16),
     },
 }
+
 Config.Scale = {
     coords = vector3(2428.98, 4775.75, 43.58),
     interactDistance = 3.0,
@@ -121,6 +130,7 @@ Config.Scale = {
         label = 'Weigh Station'
     }
 }
+
 Config.DeliveryPoints = {
     count = 3,
     countMax = 4,
@@ -183,6 +193,7 @@ Config.DeliveryPoints = {
         label = 'Delivery Point'
     }
 }
+
 Config.DeliveryNPC = {
     model = 's_m_m_strvend_01',
     walkSpeed = 1.0,
@@ -192,6 +203,7 @@ Config.DeliveryNPC = {
     truckApproachDist = 2.5,
     maxWaitTime = 20000,
 }
+
 Config.Payment = {
     safe = {
         min = 3500,
@@ -203,10 +215,12 @@ Config.Payment = {
     },
     account = 'cash',
 }
+
 Config.Documents = {
     green = 'green_document',
     red = 'red_document',
 }
+
 Config.Notifications = {
     jobAccepted = '📋 Fruit Transport job accepted! Head to the farm.',
     jobAlreadyActive = '⚠️ You already have an active job!',
@@ -241,6 +255,7 @@ Config.Notifications = {
     pressEScale = '[E] Use Weigh Station',
     pressEStartJob = '[E] Start Fruit Transport Job',
 }
+
 Config.MenuTexts = {
     riskTitle = 'Transport Method Selection',
     safeOption = '🟢 Risk-Free (Legal Document)',
