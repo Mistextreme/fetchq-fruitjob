@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Transport</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ============================================================
+         OBJECTIVES HUD — Top Right
+         ============================================================ -->
+    <div id="objectives-panel" class="hidden">
+        <div class="obj-header">
+            <i class="fas fa-clipboard-list"></i>
+            <span>OBJECTIVES</span>
+        </div>
+        <div id="objectives-list">
+            <!-- Populated by JS -->
+        </div>
+    </div>
+
+    <!-- ============================================================
+         DOCUMENT OVERLAY
+         ============================================================ -->
+    <div id="document-overlay" class="hidden">
+        <div id="document-container">
+            <div class="paper">
+                <div class="doc-header">
+                    <div class="doc-logo">🍅</div>
+                    <h1 class="doc-title">TRANSPORT DOCUMENT</h1>
+                    <p class="doc-subtitle">Fruit &amp; Vegetable Transport Authority</p>
+                </div>
+                <div class="doc-body">
+                    <div class="doc-row">
+                        <span class="doc-label">Document Type:</span>
+                        <span id="doc-type-text" class="doc-value">-</span>
+                    </div>
+                    <div class="doc-row">
+                        <span class="doc-label">Status:</span>
+                        <span id="doc-status-text" class="doc-value">-</span>
+                    </div>
+                    <div class="doc-divider"></div>
+                    <div class="doc-row">
+                        <span class="doc-label">Product:</span>
+                        <span class="doc-value">Tomatoes (Fresh Vegetables)</span>
+                    </div>
+                    <div class="doc-row">
+                        <span class="doc-label">Origin:</span>
+                        <span class="doc-value">Grapeseed Farms</span>
+                    </div>
+                    <div class="doc-row">
+                        <span class="doc-label">Delivery:</span>
+                        <span class="doc-value">Various Markets</span>
+                    </div>
+                </div>
+                <div class="stamp-area">
+                    <div id="stamp" class="stamp">
+                        <span id="stamp-text">APPROVED</span>
+                    </div>
+                </div>
+                <div class="doc-footer">
+                    <p>This document is valid during transport.</p>
+                    <p class="doc-small">Click or press ESC to close</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

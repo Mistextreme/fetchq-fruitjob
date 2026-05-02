@@ -1,0 +1,347 @@
+/* ============================================================
+   FRUIT TRANSPORT — UI STYLES
+   Objectives HUD + Document UI
+   ============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ============================================================
+   OBJECTIVES PANEL — Top Right
+   No background, subtle shadow, no backdrop-filter
+   ============================================================ */
+
+#objectives-panel {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 5000;
+    min-width: 250px;
+    max-width: 320px;
+    pointer-events: none;
+    animation: objSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+#objectives-panel.hidden {
+    display: none !important;
+}
+
+@keyframes objSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Header */
+.obj-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.obj-header i {
+    font-size: 15px;
+    color: rgba(255, 200, 80, 0.9);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.obj-header span {
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.85);
+    text-transform: uppercase;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* Objective Items */
+#objectives-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.obj-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 5px 0;
+    transition: opacity 0.5s ease, transform 0.3s ease;
+}
+
+.obj-item.completed {
+    opacity: 0.35;
+}
+
+.obj-item.completed .obj-icon {
+    color: rgba(100, 220, 100, 0.9);
+}
+
+.obj-item.completed .obj-text {
+    text-decoration: line-through;
+    text-decoration-color: rgba(255, 255, 255, 0.3);
+}
+
+.obj-item.completed .obj-check {
+    display: inline-block;
+}
+
+/* Icon */
+.obj-icon {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    min-width: 20px;
+    text-align: center;
+    transition: color 0.4s ease;
+}
+
+/* Text */
+.obj-text {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.88);
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6), 0 0 2px rgba(0, 0, 0, 0.4);
+    flex: 1;
+    line-height: 1.3;
+}
+
+/* Counter (e.g. 2/4) */
+.obj-counter {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: rgba(255, 200, 80, 0.85);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    margin-left: auto;
+}
+
+/* Check mark */
+.obj-check {
+    display: none;
+    font-size: 14px;
+    color: rgba(100, 220, 100, 0.9);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    margin-left: auto;
+}
+
+/* ============================================================
+   DOCUMENT OVERLAY
+   ============================================================ */
+#document-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    cursor: pointer;
+    opacity: 0;
+    animation: fadeIn 0.4s ease forwards;
+}
+
+#document-overlay.hidden {
+    display: none !important;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* ============================================================
+   PAPER CONTAINER
+   ============================================================ */
+#document-container {
+    animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transform: translateY(40px) scale(0.95);
+    opacity: 0;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(40px) scale(0.95); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* ============================================================
+   PAPER
+   ============================================================ */
+.paper {
+    width: 420px;
+    padding: 40px 35px;
+    background: linear-gradient(135deg, #fdf6e3 0%, #f5e6c8 50%, #fdf6e3 100%);
+    border-radius: 4px;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(139, 119, 80, 0.3),
+        inset 0 0 40px rgba(139, 119, 80, 0.08);
+    position: relative;
+    cursor: default;
+    background-image:
+        url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"),
+        linear-gradient(135deg, #fdf6e3 0%, #f5e6c8 50%, #fdf6e3 100%);
+}
+
+.paper::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #c9a96e 0%, #e0c78a 25%, #c9a96e 50%, #e0c78a 75%, #c9a96e 100%);
+    border-radius: 4px 4px 0 0;
+}
+
+.doc-header {
+    text-align: center;
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid rgba(139, 119, 80, 0.25);
+}
+
+.doc-logo { font-size: 42px; margin-bottom: 8px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)); }
+
+.doc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: #3a2e1a;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.doc-subtitle {
+    font-size: 11px;
+    color: #7a6b52;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.doc-body { margin-bottom: 24px; }
+
+.doc-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(139, 119, 80, 0.15);
+}
+.doc-row:last-child { border-bottom: none; }
+
+.doc-label {
+    font-size: 12px;
+    color: #7a6b52;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.doc-value {
+    font-size: 13px;
+    color: #3a2e1a;
+    font-weight: 500;
+}
+
+.doc-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(139, 119, 80, 0.3), transparent);
+    margin: 12px 0;
+}
+
+/* Stamp */
+.stamp-area { display: flex; justify-content: center; margin: 28px 0; }
+
+.stamp {
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transform: rotate(-15deg);
+    animation: stampSlam 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
+    position: relative;
+}
+
+/* Stamp hidden state - initially hidden when certificate opens */
+.stamp.stamp-hidden {
+    opacity: 0 !important;
+    animation: none !important;
+    transform: rotate(-15deg) scale(0);
+    border: none !important;
+    background: none !important;
+}
+.stamp.stamp-hidden::before { display: none !important; }
+.stamp.stamp-hidden #stamp-text { color: transparent !important; }
+
+@keyframes stampSlam {
+    0% { transform: rotate(-15deg) scale(3); opacity: 0; }
+    50% { transform: rotate(-15deg) scale(0.9); opacity: 0.8; }
+    100% { transform: rotate(-15deg) scale(1); opacity: 1; }
+}
+
+.stamp.green {
+    border: 5px solid rgba(34, 139, 34, 0.7);
+    background: radial-gradient(circle, rgba(34, 139, 34, 0.08), rgba(34, 139, 34, 0.02));
+}
+.stamp.green #stamp-text { color: rgba(34, 139, 34, 0.75); text-shadow: 0 0 8px rgba(34, 139, 34, 0.2); }
+.stamp.green::before {
+    content: ''; position: absolute; inset: -3px;
+    border-radius: 50%; border: 2px dashed rgba(34, 139, 34, 0.3);
+}
+
+.stamp.red {
+    border: 5px solid rgba(200, 30, 30, 0.7);
+    background: radial-gradient(circle, rgba(200, 30, 30, 0.08), rgba(200, 30, 30, 0.02));
+}
+.stamp.red #stamp-text { color: rgba(200, 30, 30, 0.75); text-shadow: 0 0 8px rgba(200, 30, 30, 0.2); }
+.stamp.red::before {
+    content: ''; position: absolute; inset: -3px;
+    border-radius: 50%; border: 2px dashed rgba(200, 30, 30, 0.3);
+}
+
+#stamp-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    text-align: center; line-height: 1.2;
+}
+
+.doc-footer {
+    text-align: center;
+    padding-top: 16px;
+    border-top: 1px solid rgba(139, 119, 80, 0.2);
+}
+.doc-footer p { font-size: 11px; color: #8c7b60; margin-bottom: 6px; }
+.doc-small { font-size: 10px !important; color: #a89878 !important; font-style: italic; opacity: 0.8; }
+
+.closing { animation: fadeOut 0.3s ease forwards; }
+.closing #document-container { animation: slideDown 0.3s ease forwards; }
+
+@keyframes slideDown {
+    from { transform: translateY(0) scale(1); opacity: 1; }
+    to { transform: translateY(40px) scale(0.95); opacity: 0; }
+}
